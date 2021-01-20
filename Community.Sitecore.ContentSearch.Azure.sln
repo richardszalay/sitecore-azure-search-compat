@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{574A12F9-8ED2-4A04-AE61-5C8A38FC0FF4}"
 	ProjectSection(SolutionItems) = preProject
 		Community.Sitecore.ContentSearch.Azure.config = Community.Sitecore.ContentSearch.Azure.config
+		Community.Sitecore.ContentSearch.Azure.IndexConfiguration.config = Community.Sitecore.ContentSearch.Azure.IndexConfiguration.config
 		README.md = README.md
 	EndProjectSection
 EndProject
