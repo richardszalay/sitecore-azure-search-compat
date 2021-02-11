@@ -1,13 +1,13 @@
-﻿using Sitecore.ContentSearch;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.Azure;
 using Sitecore.ContentSearch.Azure.Http;
 using Sitecore.ContentSearch.Azure.Models;
 using Sitecore.ContentSearch.Azure.Schema;
-using Sitecore.Diagnostics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Sitecore.ContentSearch.Diagnostics;
 
 namespace Community.Sitecore.ContentSearch.Azure
 {
@@ -56,7 +56,7 @@ namespace Community.Sitecore.ContentSearch.Azure
                         {
                             document[key] = FieldDataUtil.Truncate(document[key], estimatedSize - MaxFieldSize);
 
-                            Log.Warn($"Field '{key}' on document '{documentId}' is too large and was truncated. Disable the Filterable, Sortable, and Facetable flags on this field to prevent truncation.", this);
+                            CrawlingLog.Log.Info($"Field '{key}' on document '{documentId}' is too large and was truncated. Disable the Filterable, Sortable, and Facetable flags on this field to prevent truncation.");
                         }
                     }
                 }
@@ -65,7 +65,7 @@ namespace Community.Sitecore.ContentSearch.Azure
 
                 if (subBatches.Count > 1)
                 {
-                    Log.Info($"Batch was too large and was split into {subBatches.Count} smaller batches", this);
+                    CrawlingLog.Log.Info($"Batch was too large and was split into {subBatches.Count} smaller batches");
                 }
 
                 foreach (var subBatch in subBatches)
